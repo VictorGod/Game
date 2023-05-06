@@ -1,5 +1,25 @@
 function moveEnemy(enemy) {
   let interval; // Объявляем переменную на уровне функции
+  
+  // Функция проверки жизней не движущихся врагов
+  function checkEnemiesHealth() {
+    const staticEnemies = document.querySelectorAll('.tileE'); // Получаем всех не движущихся врагов
+    staticEnemies.forEach(enemy => { // Перебираем список врагов
+      if (enemy.health <= 0) {
+        enemy.parentNode.removeChild(enemy); // Удаляем объект из DOM дерева
+      }
+     else if (enemy.health <= 70 && enemy.health > 40) {
+      enemy.querySelector('.health').style.width = '70%';
+    } else if (enemy.health <= 40 && enemy.health > 10) {
+      enemy.querySelector('.health').style.width = '40%';
+    } else if (enemy.health <= 10) {
+      enemy.querySelector('.health').style.width = '10%';
+    }
+    });
+    setTimeout(checkEnemiesHealth, 1000); // Запускаем проверку через 1 секунду
+  }
+  
+  checkEnemiesHealth(); // Запускаем функцию проверки
 
   function moveLeft(obj) {
     let width = obj.offsetWidth; // Получаем ширину объекта
@@ -15,6 +35,12 @@ function moveEnemy(enemy) {
         if (enemy.health <= 0) {
           clearInterval(interval);
           removeEnemy();
+        } else if (enemy.health <= 70 && enemy.health > 40) {
+          enemy.querySelector('.health').style.width = '70%';
+        } else if (enemy.health <= 40 && enemy.health > 10) {
+          enemy.querySelector('.health').style.width = '40%';
+        } else if (enemy.health <= 10) {
+          enemy.querySelector('.health').style.width = '10%';
         }
       }
     }, 100);
@@ -34,6 +60,12 @@ function moveEnemy(enemy) {
         if (enemy.health <= 0) {
           clearInterval(interval);
           removeEnemy();
+        } else if (enemy.health <= 70 && enemy.health > 40) {
+          enemy.querySelector('.health').style.width = '70%';
+        } else if (enemy.health <= 40 && enemy.health > 10) {
+          enemy.querySelector('.health').style.width = '40%';
+        } else if (enemy.health <= 10) {
+          enemy.querySelector('.health').style.width = '10%';
         }
       }
     }, 100);
@@ -53,6 +85,12 @@ function moveEnemy(enemy) {
         if (enemy.health <= 0) {
           clearInterval(interval);
           removeEnemy();
+        } else if (enemy.health <= 70 && enemy.health > 40) {
+          enemy.querySelector('.health').style.width = '70%';
+        } else if (enemy.health <= 40 && enemy.health > 10) {
+          enemy.querySelector('.health').style.width = '40%';
+        } else if (enemy.health <= 10) {
+          enemy.querySelector('.health').style.width = '10%';
         }
       }
     }, 100);
@@ -72,6 +110,12 @@ function moveEnemy(enemy) {
         if (enemy.health <= 0) {
           clearInterval(interval);
           removeEnemy();
+        } else if (enemy.health <= 70 && enemy.health > 40) {
+          enemy.querySelector('.health').style.width = '70%';
+        } else if (enemy.health <= 40 && enemy.health > 10) {
+          enemy.querySelector('.health').style.width = '40%';
+        } else if (enemy.health <= 10) {
+          enemy.querySelector('.health').style.width = '10%';
         }
       }
     }, 100);
