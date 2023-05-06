@@ -1,0 +1,43 @@
+function isColliding(element, tiles, healthBar) {
+  var characterRect = element.getBoundingClientRect();
+
+  for (var i = 0; i < tiles.length; i++) {
+    var tileRect = tiles[i].getBoundingClientRect();
+
+    // Проверяем, что персонаж пересекается с плиткой.
+    if (
+      characterRect.bottom >= tileRect.top &&
+      characterRect.top <= tileRect.bottom &&
+      characterRect.right >= tileRect.left &&
+      characterRect.left <= tileRect.right
+    ) {
+      // Проверяем, что плитка имеет класс tileH (плитка здоровья).
+      if (tiles[i].classList.contains("tileHP")) {
+        // Увеличиваем здоровье персонажа на 10 и ширину полосы здоровья на 10%.
+        element.health += 10;
+        healthBar.style.width = element.health + "%";
+        // Удаляем плитку здоровья из DOM-дерева.
+        tiles[i].remove();
+      }
+      // Проверяем, что плитка имеет класс tileE (плитка опасности).
+      else if (tiles[i].classList.contains("tileE")) {
+        // Уменьшаем здоровье персонажа на 20 и ширину полосы здоровья на 20%.
+        element.health -= 50;
+        healthBar.style.width = element.health + "%";
+        console.log("Здоровье персонажа: " + element.health);
+        if (element.health <= 0) {
+          // Обновляем страницу.
+          location.reload();
+        }
+        return true;
+      }
+      // Проверяем, что плитка имеет класс tileW (стена).
+      else if (tiles[i].classList.contains("tileW")) {
+        return true;
+      }
+    }
+  }
+
+  console.log("Здоровье персонажа: " + element.health);
+  return false;
+}
