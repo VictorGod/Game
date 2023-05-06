@@ -63,6 +63,7 @@ function isColliding(element, tiles, characterHealth, characterAttack) {
 }
 
 
+
 function getAdjacentTiles(tile, tiles) {
   var adjacentTiles = [];
   var tileRect = tile.getBoundingClientRect();
