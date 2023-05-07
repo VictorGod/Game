@@ -71,19 +71,21 @@ function getAdjacentTiles(tile, tiles) {
   for (var i = 0; i < tiles.length; i++) {
     var otherTileRect = tiles[i].getBoundingClientRect();
 
-    if (
-      tile != tiles[i] &&
-      tileRect.bottom == otherTileRect.bottom &&
-      tileRect.left == otherTileRect.right ||
-      tileRect.right == otherTileRect.left && 
-      tileRect.top == otherTileRect.top   
-    ) {
-      adjacentTiles.push(tiles[i]);
+    switch (true) {
+      case tile != tiles[i] &&
+           tileRect.bottom == otherTileRect.bottom &&
+           tileRect.left == otherTileRect.right:
+      case tile != tiles[i] &&
+           tileRect.right == otherTileRect.left && 
+           tileRect.top == otherTileRect.top:
+        adjacentTiles.push(tiles[i]);
+        break;
     }
   }
 
   return adjacentTiles;
 }
+
 function moveCharacter(event) {
   var element = document.getElementById("character");
   var style = window.getComputedStyle(element);
