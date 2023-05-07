@@ -156,7 +156,19 @@ function moveCharacter(event) {
   }
 }
 
+function checkCollisions() {
+  var element = document.getElementById("character");
+  var tiles = document.querySelectorAll(".tile");
+  var characterHealth = character.health;
+  var characterAttack = character.attack;
 
+  return isColliding(element, tiles, characterHealth, characterAttack);
+}
+
+setInterval(function() {
+  if (checkCollisions()) {
+  } 
+}, 1000);
 
 // Добавляем обработчик событий для нажатия клавиш на клавиатуре.
 document.addEventListener("keydown", moveCharacter);
