@@ -6,12 +6,11 @@ function isColliding(element, tiles, characterHealth, characterAttack) {
 
     // Проверяем, что персонаж пересекается с плиткой.
     if (
-  characterRect.bottom > tileRect.top &&
-  characterRect.top < tileRect.bottom &&
-  characterRect.right > tileRect.left &&
-  characterRect.left < tileRect.right
-)
-{
+      characterRect.bottom > tileRect.top &&
+      characterRect.top < tileRect.bottom &&
+      characterRect.right > tileRect.left &&
+      characterRect.left < tileRect.right
+    ) {
       // Проверяем, что плитка имеет класс tileH (плитка здоровья).
       if (tiles[i].classList.contains("tileHP")) {
         // Увеличиваем здоровье персонажа на 10.
@@ -33,7 +32,6 @@ function isColliding(element, tiles, characterHealth, characterAttack) {
           }
         }
 
-        console.log("Здоровье персонажа: " + element.health);
         document.querySelector('.health').style.width = `${element.health}%`; // Обновляем ширину полоски здоровья
 
         if (element.health <= 0) {
@@ -57,12 +55,9 @@ function isColliding(element, tiles, characterHealth, characterAttack) {
     }
   }
 
-  console.log("Здоровье персонажа: " + element.health);
   document.querySelector('.health').style.width = `${element.health}%`; // Обновляем ширину полоски здоровья
   return false;
 }
-
-
 
 function getAdjacentTiles(tile, tiles) {
   var adjacentTiles = [];
@@ -144,14 +139,12 @@ function moveCharacter(event) {
 
     // Клавиша "Space"
     case 32:
-      console.log("Нажата клавиша \"Пробел\"");
       var enemies = document.querySelectorAll('.tileE'); // Найти всех врагов на поле
       for (var i = 0; i < enemies.length; i++) {
         var enemyRect = enemies[i].getBoundingClientRect();
         var distance = Math.sqrt((enemyRect.x - element.getBoundingClientRect().x)**2 + (enemyRect.y - element.getBoundingClientRect().y)**2); // Расстояние до врага
         if (distance <= 100) { // Проверка расстояния до врага
           enemies[i].health -= characterAttack;
-          console.log("Персонаж атаковал плитку с id: " + enemies[i].id + ". Здоровье плитки: " + enemies[i].health);
         }
       }
       break;
